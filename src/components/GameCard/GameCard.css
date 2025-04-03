@@ -1,0 +1,100 @@
+.game-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color var(--transition-speed);
+    height: 100%;
+    position: relative;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+}
+
+.game-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--hover-shadow);
+}
+
+.game-card-link {
+    text-decoration: none;
+    color: var(--text-primary);
+    display: block;
+    height: 100%;
+    transition: color var(--transition-speed);
+}
+
+.game-card-image-container {
+    height: 180px;
+    overflow: hidden;
+    position: relative;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.game-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    filter: brightness(0.95);
+}
+
+.game-card:hover .game-card-image {
+    transform: scale(1.1);
+    filter: brightness(1.05);
+}
+
+.game-card-image-placeholder {
+    height: 180px;
+    background-color: var(--bg-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+.game-card-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--text-primary);
+    transition: color var(--transition-speed);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.bookmark-btn {
+    background: none;
+    border: none;
+    color: #6c757d;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.2s ease;
+}
+
+.bookmark-btn:hover {
+    color: #0d6efd;
+}
+
+.bookmark-btn.bookmarked {
+    color: #0d6efd;
+}
+
+.game-rating {
+    display: inline-flex;
+    align-items: center;
+}
+
+.game-platforms {
+    margin-top: 0.5rem;
+    color: #6c757d;
+}
+
+.platform-icon {
+    font-size: 1rem;
+    margin-right: 0.5rem;
+}

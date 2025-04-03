@@ -1,0 +1,65 @@
+/* Sidebar Slide Animation Styles */
+
+/* Main content container transition */
+.content-container {
+    transition: transform 0.3s ease-out, width 0.3s ease-out;
+    width: 100%;
+    position: relative;
+    margin-left: 0;
+}
+
+/* When sidebar is open, shift content to the right */
+.sidebar-open .content-container {
+    transform: translateX(320px);
+    /* Match the sidebar width */
+}
+
+/* Ensure the sidebar has a proper z-index and fixed position */
+.filter-sidebar {
+    z-index: 1050;
+    transition: transform 0.3s ease-out;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Add smooth transition to the main page container */
+.home-page {
+    transition: padding-left 0.3s ease-out;
+    overflow-x: hidden;
+    /* Prevent horizontal scrollbar during animation */
+}
+
+/* When sidebar is open, adjust the home page padding */
+.sidebar-open .home-page {
+    padding-left: 0;
+    /* Let the transform handle the shift instead */
+}
+
+/* Game cards should have a smooth transition too */
+.games-grid .col {
+    transition: transform 0.3s ease-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .sidebar-open .content-container {
+        transform: translateX(280px);
+        /* Slightly smaller shift on medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar-open .content-container {
+        transform: translateX(0);
+        /* Don't shift on mobile */
+    }
+
+    .sidebar-open .home-page {
+        padding-left: 0;
+    }
+
+    /* On mobile, the sidebar should overlay the content instead of pushing it */
+    .filter-sidebar {
+        width: 100% !important;
+        max-width: 320px;
+    }
+}

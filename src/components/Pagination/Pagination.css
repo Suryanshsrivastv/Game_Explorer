@@ -1,0 +1,75 @@
+.pagination {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    animation: fadeIn 0.8s ease-in;
+}
+
+.pagination .page-item .page-link {
+    color: var(--text-primary);
+    background-color: var(--bg-card);
+    border-color: var(--border-color);
+    transition: all var(--transition-speed) ease;
+    padding: 0.5rem 0.75rem;
+    margin: 0 0.2rem;
+    border-radius: 6px;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.pagination .page-item .page-link:hover {
+    background-color: var(--accent-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pagination .page-item .page-link:focus {
+    box-shadow: 0 0 0 0.25rem rgba(100, 108, 255, 0.25);
+    outline: none;
+}
+
+.pagination .page-item.disabled .page-link {
+    color: var(--text-secondary);
+    background-color: var(--bg-secondary);
+    border-color: var(--border-color);
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Add a subtle animation when changing pages */
+@keyframes pageChange {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.pagination-changing {
+    animation: pageChange 0.5s ease-out;
+}
+
+/* Add a subtle scale effect on hover for pagination container */
+.pagination:hover {
+    transform: scale(1.02);
+    transition: transform 0.3s ease;
+}
+
+/* Add responsive styles for smaller screens */
+@media (max-width: 576px) {
+    .pagination .page-item .page-link {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.9rem;
+    }
+}

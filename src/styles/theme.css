@@ -1,0 +1,216 @@
+:root {
+    /* Light Theme Variables */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --bg-card: #ffffff;
+    --text-primary: #212529;
+    --text-secondary: #6c757d;
+    --border-color: #dee2e6;
+    --accent-color: #646cff;
+    --accent-hover: #535bf2;
+    --header-bg: #343a40;
+    --header-text: #ffffff;
+    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --hover-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    --sidebar-bg: #f8f9fa;
+    --alert-info-bg: #cff4fc;
+    --alert-info-text: #055160;
+    --alert-danger-bg: #f8d7da;
+    --alert-danger-text: #842029;
+    --spinner-color: #646cff;
+    --badge-bg: #6c757d;
+    --badge-text: #ffffff;
+    --button-primary-bg: #646cff;
+    --button-primary-text: #ffffff;
+    --button-secondary-bg: #6c757d;
+    --button-secondary-text: #ffffff;
+    --button-outline-color: #646cff;
+    --transition-speed: 0.3s;
+}
+
+[data-theme="dark"] {
+    /* Dark Theme Variables */
+    --bg-primary: #121212;
+    --bg-secondary: #1e1e1e;
+    --bg-card: #2d2d2d;
+    --text-primary: #e1e1e1;
+    --text-secondary: #adb5bd;
+    --border-color: #444444;
+    --accent-color: #818cf8;
+    --accent-hover: #6366f1;
+    --header-bg: #1a1a1a;
+    --header-text: #ffffff;
+    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --hover-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    --sidebar-bg: #1e1e1e;
+    --alert-info-bg: #0d3446;
+    --alert-info-text: #8ed8f8;
+    --alert-danger-bg: #3c1618;
+    --alert-danger-text: #f5c2c7;
+    --spinner-color: #818cf8;
+    --badge-bg: #4b5563;
+    --badge-text: #e1e1e1;
+    --button-primary-bg: #818cf8;
+    --button-primary-text: #ffffff;
+    --button-secondary-bg: #4b5563;
+    --button-secondary-text: #ffffff;
+    --button-outline-color: #818cf8;
+    --transition-speed: 0.3s;
+}
+
+/* Global Animation Classes */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+.slide-up {
+    animation: slideUp 0.5s ease-out;
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+.slide-in-right {
+    animation: slideInRight 0.5s ease-out;
+}
+
+.slide-in-left {
+    animation: slideInLeft 0.5s ease-out;
+}
+
+.bounce {
+    animation: bounce 0.5s ease;
+}
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Theme transition effect */
+@keyframes themeTransition {
+    0% {
+        filter: blur(0);
+        opacity: 1;
+    }
+
+    50% {
+        filter: blur(2px);
+        opacity: 0.8;
+    }
+
+    100% {
+        filter: blur(0);
+        opacity: 1;
+    }
+}
+
+.theme-transition {
+    animation: themeTransition 0.5s ease;
+}
+
+/* Global Theme Styles */
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+/* Apply theme transitions to common elements */
+a,
+button,
+.card,
+.alert,
+.badge {
+    transition: all var(--transition-speed) ease;
+}
+
+/* Improved focus styles for accessibility */
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* Smooth scrolling for the entire page */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Improved card hover effects */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--hover-shadow);
+}

@@ -1,0 +1,121 @@
+.game-detail-container {
+    padding-top: 70px;
+    /* Added padding to account for fixed header */
+    padding-bottom: 2rem;
+}
+
+.game-title {
+    margin-bottom: 1rem;
+}
+
+.game-image {
+    width: 100%;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.game-info {
+    margin-bottom: 2rem;
+}
+
+.game-description {
+    margin: 1.5rem 0;
+    line-height: 1.6;
+}
+
+.game-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.game-rating {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-right: 1rem;
+}
+
+.game-screenshots {
+    margin: 2rem 0;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+
+.system-requirements {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+    .carousel-item img {
+        height: 250px;
+    }
+}
+
+/* Loading animation styles */
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 3rem auto;
+    max-width: 200px;
+}
+
+.game-loading {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    transform-style: preserve-3d;
+    perspective: 500px;
+    animation: rotate 3s infinite linear;
+}
+
+.game-loading-cube {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+.game-loading-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, var(--accent-color), var(--spinner-color));
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    opacity: 0.9;
+}
+
+.loading-text {
+    margin-top: 2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: var(--text-primary);
+    animation: pulse 1.5s infinite alternate;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotateX(0) rotateY(0) rotateZ(0);
+    }
+
+    100% {
+        transform: rotateX(360deg) rotateY(180deg) rotateZ(360deg);
+    }
+}
