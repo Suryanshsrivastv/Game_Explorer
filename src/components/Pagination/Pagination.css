@@ -43,7 +43,6 @@
     cursor: not-allowed;
 }
 
-/* Add a subtle animation when changing pages */
 @keyframes pageChange {
     0% {
         opacity: 0;
@@ -60,13 +59,11 @@
     animation: pageChange 0.5s ease-out;
 }
 
-/* Add a subtle scale effect on hover for pagination container */
 .pagination:hover {
     transform: scale(1.02);
     transition: transform 0.3s ease;
 }
 
-/* Add responsive styles for smaller screens */
 @media (max-width: 576px) {
     .pagination .page-item .page-link {
         padding: 0.4rem 0.6rem;

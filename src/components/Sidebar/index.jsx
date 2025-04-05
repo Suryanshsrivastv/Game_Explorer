@@ -8,7 +8,6 @@ const Sidebar = ({ onFilterChange }) => {
     const filters = useSelector((state) => state.filters);
     const dispatch = useDispatch();
 
-    // Sample data - in a real app, these would come from the API
     const categories = [
         { id: 'action', name: 'Action' },
         { id: 'adventure', name: 'Adventure' },

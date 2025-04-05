@@ -14,10 +14,10 @@ const GameDetail = () => {
     const isBookmarked = bookmarks.some(item => item?.id === parseInt(id));
 
     useEffect(() => {
-        // Fetch game details when component mounts
+       
         dispatch(fetchGameDetails(id));
 
-        // Clear current game when component unmounts
+       
         return () => {
             dispatch(clearCurrentGame());
         };
@@ -31,14 +31,14 @@ const GameDetail = () => {
         }
     };
 
-    // Format release date
+ 
     const formatReleaseDate = (dateString) => {
         if (!dateString) return 'Unknown';
         const date = new Date(dateString);
         return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
     };
 
-    // Render loading state
+ 
     if (status === 'loading') {
         return (
             <div className="game-detail-page">
@@ -62,7 +62,7 @@ const GameDetail = () => {
         );
     }
 
-    // Render error state
+
     if (status === 'failed') {
         return (
             <div>
@@ -79,7 +79,6 @@ const GameDetail = () => {
         );
     }
 
-    // Render game details when data is loaded
     if (status === 'succeeded' && currentGame) {
         return (
             <div className="game-detail-page">

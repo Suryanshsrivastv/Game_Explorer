@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-// Helper function to load filters from localStorage
+
 const loadFilters = () => {
     try {
         const serializedFilters = localStorage.getItem('gameFilters');
@@ -24,7 +24,7 @@ const loadFilters = () => {
     }
 };
 
-// Helper function to save filters to localStorage
+
 const saveFilters = (filters) => {
     try {
         const serializedFilters = JSON.stringify(filters);

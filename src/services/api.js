@@ -1,12 +1,11 @@
 import axios from 'axios';
 
-// RAWG API key - in a real app, this would be stored in an environment variable
-// You need to replace this with your own API key from https://rawg.io/apidocs
+
+
 const API_KEY = '04fba186a48e459985b93e84e1679e4f';
 // Using proxy URL to avoid CORS issues
 const BASE_URL = '/api/api';
 
-// Create axios instance with base configuration
 const api = axios.create({
     baseURL: BASE_URL,
     params: {
@@ -14,9 +13,8 @@ const api = axios.create({
     },
 });
 
-// Game API services
 export const gameService = {
-    // Get a list of games with optional filters
+   
     getGames: async (params = {}) => {
         try {
             const response = await api.get('/games', { params });
@@ -27,7 +25,6 @@ export const gameService = {
         }
     },
 
-    // Get details for a specific game
     getGameDetails: async (id) => {
         try {
             const gameResponse = await api.get(`/games/${id}`);
@@ -38,7 +35,6 @@ export const gameService = {
         }
     },
 
-    // Get screenshots for a specific game
     getGameScreenshots: async (id) => {
         try {
             const screenshotsResponse = await api.get(`/games/${id}/screenshots`);
@@ -49,7 +45,6 @@ export const gameService = {
         }
     },
 
-    // Get game genres
     getGenres: async () => {
         try {
             const response = await api.get('/genres');
@@ -60,7 +55,6 @@ export const gameService = {
         }
     },
 
-    // Get game tags
     getTags: async () => {
         try {
             const response = await api.get('/tags');

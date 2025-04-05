@@ -17,7 +17,6 @@ const Header = ({ onSearch, onFilterChange }) => {
     const { isSignedIn, user } = useAuth();
     const progressBarRef = useRef(null);
 
-    // Handle scroll progress indicator
     useEffect(() => {
         const handleScroll = () => {
             const totalHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -36,14 +35,11 @@ const Header = ({ onSearch, onFilterChange }) => {
         }
     };
 
-    // Handle input change for real-time search
     const handleInputChange = (e) => {
         const value = e.target.value;
         setSearchTerm(value);
 
-        // Implement debounced search for better performance
         if (onSearch) {
-            // Only trigger search if there's a search term or if clearing previous search
             if (value.trim() || searchTerm.trim()) {
                 onSearch(value);
             }
@@ -53,8 +49,6 @@ const Header = ({ onSearch, onFilterChange }) => {
     const toggleSidebar = () => {
         const newSidebarState = !showSidebar;
         setShowSidebar(newSidebarState);
-
-        // Toggle the sidebar-open class on the body element
         if (newSidebarState) {
             document.body.classList.add('sidebar-open');
         } else {
@@ -62,7 +56,6 @@ const Header = ({ onSearch, onFilterChange }) => {
         }
     };
 
-    // Remove sidebar-open class when component unmounts
     useEffect(() => {
         return () => {
             document.body.classList.remove('sidebar-open');
@@ -127,8 +120,6 @@ const Header = ({ onSearch, onFilterChange }) => {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-
-            {/* Scroll Progress Indicator */}
             <div className="scroll-progress-container">
                 <div
                     ref={progressBarRef}
@@ -137,7 +128,6 @@ const Header = ({ onSearch, onFilterChange }) => {
                 ></div>
             </div>
 
-            {/* Sidebar Offcanvas */}
             <Offcanvas show={showSidebar} onHide={toggleSidebar} placement="start" className="filter-sidebar">
                 <Offcanvas.Header closeButton>
                     <Offcanvas.Title>Filters</Offcanvas.Title>

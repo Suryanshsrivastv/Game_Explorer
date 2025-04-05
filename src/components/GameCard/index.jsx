@@ -10,7 +10,7 @@ const GameCard = ({ game }) => {
     const isBookmarked = bookmarks.some(item => item?.id === game.id);
 
     const handleBookmark = (e) => {
-        e.preventDefault(); // Prevent navigating to detail page
+        e.preventDefault();
         e.stopPropagation();
 
         if (isBookmarked) {
@@ -20,7 +20,6 @@ const GameCard = ({ game }) => {
         }
     };
 
-    // Format release date
     const formatReleaseDate = (dateString) => {
         if (!dateString) return 'Unknown';
         const date = new Date(dateString);
@@ -92,7 +91,6 @@ const GameCard = ({ game }) => {
     );
 };
 
-// Helper function to get platform icons
 const getPlatformIcon = (platformName) => {
     const name = platformName.toLowerCase();
     if (name.includes('playstation')) return <i className="bi bi-playstation"></i>;
@@ -103,7 +101,7 @@ const getPlatformIcon = (platformName) => {
     if (name.includes('linux')) return <i className="bi bi-ubuntu"></i>;
     if (name.includes('android')) return <i className="bi bi-android2"></i>;
     if (name.includes('ios')) return <i className="bi bi-phone"></i>;
-    return <i className="bi bi-controller"></i>; // Default icon
+    return <i className="bi bi-controller"></i>;
 };
 
 export default GameCard;

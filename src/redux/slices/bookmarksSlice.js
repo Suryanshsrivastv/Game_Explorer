@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-// Helper function to load bookmarks from localStorage
+
 const loadBookmarks = (userId) => {
     try {
         const storageKey = getUserBookmarkKey(userId);
@@ -15,12 +15,11 @@ const loadBookmarks = (userId) => {
     }
 };
 
-// Helper function to get user-specific storage key
 const getUserBookmarkKey = (userId) => {
     return userId ? `gameBookmarks_${userId}` : 'gameBookmarks';
 };
 
-// Helper function to save bookmarks to localStorage
+
 const saveBookmarks = (bookmarks, userId) => {
     try {
         const serializedBookmarks = JSON.stringify(bookmarks);
@@ -40,11 +39,11 @@ const bookmarksSlice = createSlice({
     reducers: {
         setUserId: (state, action) => {
             state.userId = action.payload;
-            // Load user-specific bookmarks when user ID changes
+          
             state.items = loadBookmarks(action.payload);
         },
         addBookmark: (state, action) => {
-            // Check if the game is already bookmarked
+            
             const exists = state.items.some(item => item.id === action.payload.id);
             if (!exists) {
                 state.items.push(action.payload);

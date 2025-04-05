@@ -17,7 +17,6 @@ const Home = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const filters = useSelector((state) => state.filters);
 
-    // Fetch games when component mounts or when filters/search/page changes
     useEffect(() => {
         const params = {
             page: currentPage,
@@ -25,17 +24,15 @@ const Home = () => {
             ordering: filters.popularity || '-added',
         };
 
-        // Add genres filter if categories are selected
+
         if (filters.categories.length > 0) {
             params.genres = filters.categories.join(',');
         }
 
-        // Add tags filter if tags are selected
         if (filters.tags.length > 0) {
             params.tags = filters.tags.join(',');
         }
 
-        // Add year filter if a release year is selected
         if (filters.releaseYear) {
             const year = parseInt(filters.releaseYear);
             params.dates = `${year}-01-01,${year}-12-31`;
@@ -46,12 +43,12 @@ const Home = () => {
 
     const handleSearch = (term) => {
         setSearchTerm(term);
-        setCurrentPage(1); // Reset to first page on new search
+        setCurrentPage(1); 
     };
 
     const handleFilterChange = (newFilters) => {
         dispatch(setAllFilters(newFilters));
-        setCurrentPage(1); // Reset to first page on filter change
+        setCurrentPage(1); 
     };
 
     const handlePageChange = (page) => {
@@ -64,8 +61,6 @@ const Home = () => {
 
             <Container fluid className="mt-4 mb-5 content-container">
                 <Row>
-                    {/* Sidebar moved to Header component as offcanvas */}
-
                     <Col>
                         {status === 'loading' && (
                             <div className="loading-container">

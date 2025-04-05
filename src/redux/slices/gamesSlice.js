@@ -1,13 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-// RAWG API key - in a real app, this would be stored in an environment variable
-// You need to replace this with your own API key from https://rawg.io/apidocs
 const API_KEY = '04fba186a48e459985b93e84e1679e4f';
-// Using proxy URL to avoid CORS issues
 const BASE_URL = '/api/api';
 
-// Create axios instance with base configuration
 const api = axios.create({
     baseURL: BASE_URL,
     params: {
@@ -15,7 +11,6 @@ const api = axios.create({
     },
 });
 
-// Async thunk for fetching games
 export const fetchGames = createAsyncThunk(
     'games/fetchGames',
     async (params = {}, { rejectWithValue }) => {
@@ -28,18 +23,17 @@ export const fetchGames = createAsyncThunk(
     }
 );
 
-// Async thunk for fetching game details
 export const fetchGameDetails = createAsyncThunk(
     'games/fetchGameDetails',
     async (id, { rejectWithValue }) => {
         try {
-            // Fetch basic game details
+           
             const gameResponse = await api.get(`/games/${id}`);
 
-            // Fetch screenshots in parallel
+          
             const screenshotsResponse = await api.get(`/games/${id}/screenshots`);
 
-            // Combine the data
+            
             return {
                 ...gameResponse.data,
                 screenshots: screenshotsResponse.data,
@@ -55,7 +49,7 @@ const gamesSlice = createSlice({
     initialState: {
         games: [],
         currentGame: null,
-        status: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
+        status: 'idle',
         error: null,
         count: 0,
         totalPages: 0,
@@ -67,7 +61,7 @@ const gamesSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            // Handle fetchGames
+           
             .addCase(fetchGames.pending, (state) => {
                 state.status = 'loading';
             })
@@ -75,7 +69,7 @@ const gamesSlice = createSlice({
                 state.status = 'succeeded';
                 state.games = action.payload.results;
                 state.count = action.payload.count;
-                // Calculate total pages (assuming 20 items per page)
+               
                 state.totalPages = Math.ceil(action.payload.count / 20);
             })
             .addCase(fetchGames.rejected, (state, action) => {
@@ -83,7 +77,7 @@ const gamesSlice = createSlice({
                 state.error = action.payload || 'Failed to fetch games';
             })
 
-            // Handle fetchGameDetails
+            
             .addCase(fetchGameDetails.pending, (state) => {
                 state.status = 'loading';
             })

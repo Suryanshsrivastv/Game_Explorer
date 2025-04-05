@@ -8,22 +8,16 @@ import { setUserId } from './redux/slices/bookmarksSlice'
 import { ThemeProvider } from './context/ThemeContext'
 import './styles/theme.css'
 import './App.css'
-
-// Pages
 import Home from './pages/Home'
 import GameDetail from './pages/GameDetail'
 import Library from './pages/Library'
 
-// Clerk publishable key - in a real app, this would be stored in an environment variable
-// Ensuring proper key format for Clerk authentication
 const CLERK_PUBLISHABLE_KEY = 'pk_test_Y29tcGxldGUtbWFnZ290LTM3LmNsZXJrLmFjY291bnRzLmRldiQ='
 
-// Auth wrapper component to sync Clerk user with Redux store
 const AuthWrapper = ({ children }) => {
   const { userId, isSignedIn } = useAuth();
   const dispatch = useDispatch();
 
-  // Update Redux store with user ID when auth state changes
   React.useEffect(() => {
     if (isSignedIn && userId) {
       dispatch(setUserId(userId));
@@ -35,7 +29,6 @@ const AuthWrapper = ({ children }) => {
   return children;
 };
 
-// Protected route component
 const ProtectedRoute = ({ children }) => {
   return (
     <>

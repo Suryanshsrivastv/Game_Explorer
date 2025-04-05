@@ -1,24 +1,22 @@
 import React, { createContext, useState, useEffect } from 'react';
 
-// Create a context for theme management
 export const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-    // Check if user has a theme preference stored in localStorage
+ 
     const getInitialTheme = () => {
         const savedTheme = localStorage.getItem('theme');
-        // Check for system preference if no saved theme
+        
         if (!savedTheme) {
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
             return prefersDark ? 'dark' : 'light';
         }
-        return savedTheme; // Return saved theme if it exists
+        return savedTheme; 
     };
 
     const [theme, setTheme] = useState(getInitialTheme);
     const [isTransitioning, setIsTransitioning] = useState(false);
 
-    // Toggle between light and dark themes with transition effect
     const toggleTheme = () => {
         setIsTransitioning(true);
         setTimeout(() => {
@@ -26,12 +24,10 @@ export const ThemeProvider = ({ children }) => {
                 const newTheme = prevTheme === 'light' ? 'dark' : 'light';
                 return newTheme;
             });
-            // Reset transition state after theme change
             setTimeout(() => setIsTransitioning(false), 500);
         }, 50);
     };
 
-    // Update localStorage and document body class when theme changes
     useEffect(() => {
         localStorage.setItem('theme', theme);
         document.body.setAttribute('data-theme', theme);

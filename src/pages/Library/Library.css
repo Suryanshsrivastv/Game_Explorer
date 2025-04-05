@@ -23,7 +23,7 @@
     animation: fadeIn 0.8s ease-in;
 }
 
-/* Add staggered animation for game cards */
+
 .library-page .col:nth-child(4n+1) .game-card {
     animation: slideUp 0.4s ease-out;
 }
@@ -50,14 +50,14 @@
     border-radius: 8px;
 }
 
-/* Add styling for the library spinner */
+
 .library-spinner {
     color: var(--spinner-color) !important;
     width: 3rem;
     height: 3rem;
 }
 
-/* Enhanced staggered animation for game cards */
+
 .library-grid .library-item-0 .game-card {
     animation: slideUp 0.4s ease-out;
 }
@@ -74,7 +74,6 @@
     animation: slideUp 0.7s ease-out;
 }
 
-/* Add hover effect for library items */
 .library-grid .col:hover .game-card {
     transform: translateY(-10px);
     box-shadow: var(--hover-shadow);
